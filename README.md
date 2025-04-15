@@ -236,3 +236,26 @@ const timer = setTimeout(() => {
 
 setThinkingTimer(timer)
 ```
+
+
+## Future Improvements
+
+With additional time, I would consider implementing:
+
+1. Server-side storage for interview data persistence
+2. More sophisticated response analysis with fine-tuned models
+3. Integration with applicant tracking systems
+4. Additional interview templates for different roles
+5. Analytics dashboard for interview metrics
+
+
+## 📸 Screenshots
+
+### Chatbot UI
+![Chatbot UI](./assets/salary.png)
+
+### Dynamic Interview Flow
+![Interview Flow](./assets/more-exp.png)
+
+### Early Exit
+![Interview Flow](./assets/early-exit.png)
