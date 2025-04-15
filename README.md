@@ -1,42 +1,50 @@
+Sure! Here's your modified README file with:
+
+- Proper bullet formatting throughout
+- Included **Design Decisions**, **Assumptions**, and **Interesting Technical Tidbits** sections
+- Consistent Markdown styling with backticks for code and bold titles for clarity
+
+---
+
 # Interview Chatbot
 
 An AI-powered interview chatbot that simulates a software engineering interview. The chatbot follows a predefined script but uses AI to understand and respond to user inputs intelligently.
 
 ## Features
 
-- Structured interview flow with branching logic
-- AI-powered response analysis using OpenAI's GPT models
-- Ability to skip questions based on user experience
-- Conversation history storage
-- Responsive UI with typing indicators
-- Fallback mechanisms when AI is unavailable
+- Structured interview flow with branching logic  
+- AI-powered response analysis using OpenAI's GPT models  
+- Ability to skip questions based on user experience  
+- Conversation history storage  
+- Responsive UI with typing indicators  
+- Fallback mechanisms when AI is unavailable  
 
 ## Prerequisites
 
-- Node.js 18+ installed
-- npm or yarn package manager
-- OpenAI API key
+- Node.js 18+ installed  
+- npm or yarn package manager  
+- OpenAI API key  
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
-\`\`\`bash
-git clone https://github.com/yourusername/interview-chatbot.git
-cd interview-chatbot
-\`\`\`
+   ```bash
+   git clone https://github.com/yourusername/interview-chatbot.git
+   cd interview-chatbot
+   ```
 
-2. Install dependencies:
+2. **Install dependencies:**
 
-\`\`\`bash
-npm install
-\`\`\`
+   ```bash
+   npm install --force
+   ```
 
-3. Create a `.env.local` file in the root directory with your OpenAI API key:
+3. **Create a `.env.local` file in the root directory with your OpenAI API key:**
 
-\`\`\`
-OPENAI_API_KEY=your_openai_api_key_here
-\`\`\`
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
 ## Running the Application
 
@@ -44,9 +52,9 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 Run the development server:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
@@ -54,66 +62,186 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the a
 
 Build the application for production:
 
-\`\`\`bash
+```bash
 npm run build
-\`\`\`
+```
 
 Start the production server:
 
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 ## How It Works
 
 ### Architecture
 
-- **Frontend**: React components with Next.js App Router
-- **Backend**: Next.js API routes
-- **AI Integration**: OpenAI GPT models via server-side API calls
-- **Storage**: Client-side localStorage for interview data
+- **Frontend**: React components with Next.js App Router  
+- **Backend**: Next.js API routes  
+- **AI Integration**: OpenAI GPT models via server-side API calls  
+- **Storage**: Client-side localStorage for interview data  
 
 ### Interview Flow
 
-1. The chatbot follows a script defined in `lib/script-loader.ts`
-2. User responses are analyzed using pattern matching and AI
-3. The chatbot can adapt the interview flow based on user responses
-4. Interview history is saved in localStorage
+- The chatbot follows a script defined in `lib/script-loader.ts`  
+- User responses are analyzed using pattern matching and AI  
+- The chatbot adapts the interview flow based on user responses  
+- Interview history is saved in localStorage  
 
 ### AI Integration
 
-The application uses OpenAI's GPT models for two main purposes:
+The application uses OpenAI's GPT models for:
 
-1. **Response Analysis**: Understanding user responses to determine the next question
-2. **Question Answering**: Providing informative answers when users ask questions
+- **Response Analysis**: Understanding user responses to determine the next question  
+- **Question Answering**: Providing informative answers when users ask questions  
 
-All AI calls are made server-side through the Next.js API route to keep your API key secure.
+All AI calls are made server-side via a Next.js API route to keep your API key secure.
 
 ## Customization
 
 ### Modifying the Interview Script
 
-The interview script is defined in `lib/script-loader.ts`. You can modify the `softwareEngineerScript` object to change questions, add new branches, or create entirely new interview flows.
+- The interview script is defined in `lib/script-loader.ts`  
+- Modify the `softwareEngineerScript` object to change questions, add new branches, or build new flows  
 
 ### Changing the Job Description
 
-Update the job description in `data/jobs/software-engineer.json` to match your specific job requirements.
+- Update the job description in `data/jobs/software-engineer.json` to match your specific job requirements  
 
 ## Troubleshooting
 
 ### OpenAI API Issues
 
-If you encounter errors related to the OpenAI API:
-
-1. Verify your API key is correct in `.env.local`
-2. Check if you have sufficient credits in your OpenAI account
-3. Look for rate limiting messages in the console
+- Verify your API key is correct in `.env.local`  
+- Check if you have sufficient credits in your OpenAI account  
+- Look for rate limiting messages in the console  
 
 ### Browser Storage Issues
 
-If interview history isn't saving correctly:
+- Ensure localStorage is enabled in your browser  
+- Clear browser storage and try again  
+- Check the browser console for storage-related errors  
 
-1. Check if localStorage is enabled in your browser
-2. Clear browser storage and try again
-3. Verify there are no console errors related to storage
+---
 
+## Design Decisions
+
+### Architecture
+
+1. **Script Engine**  
+   - Implemented as a state machine with nodes and branches  
+   - Each interview question is a node with defined response types and branching logic  
+   - Allows flexible interview flows that adapt to candidate responses  
+
+2. **Storage Layer**  
+   - Used client-side localStorage for persistence  
+   - Followed a service-based approach to abstract storage operations  
+   - Makes it easy to replace with server-side storage in the future  
+
+3. **AI Integration**  
+   - Created a two-tier analysis system:  
+     - **Primary**: OpenAI for natural language understanding  
+     - **Fallback**: Rule-based pattern matching for reliability  
+   - Ensures the system works even if AI service is temporarily unavailable  
+
+4. **UI Components**  
+   - Used `shadcn/ui` for consistent, accessible components  
+   - Implemented a familiar chat-based interface  
+   - Added animations and typing indicators for a more natural feel  
+
+---
+
+## Assumptions
+
+### User Experience
+
+- Users prefer a conversational interface over form-based interviews  
+- Typing indicators and animations simulate human-like interaction  
+- Users expect the ability to review past interviews  
+
+### Technical
+
+- Application will be run on modern browsers  
+- Users have stable internet connections  
+- Interview sessions are expected to be under an hour  
+- Local storage is sufficient for data persistence  
+
+### Interview Process
+
+- Covers backend, frontend, and full-stack roles  
+- Includes relevant questions on Python and React  
+- Also assesses salary expectations and cultural fit  
+
+### AI Capabilities
+
+- OpenAI can reliably extract structured information from natural responses  
+- AI can detect when to skip questions based on experience  
+- Fallback logic is required for AI unavailability scenarios  
+
+---
+
+## Interesting Technical Tidbits
+
+### Dynamic Question Skipping
+
+The system can skip questions dynamically based on candidate responses:
+
+1. Detects lack of experience via keyword analysis  
+2. Determines the next relevant question category  
+3. Skips irrelevant sections smoothly  
+4. Provides seamless user experience  
+
+```typescript
+// Example of logic for skipping React questions
+if (nodeId === "react-rating" && isNoExperienceResponse) {
+  return {
+    nextNodeId: "debugging-approach",
+    endConversation: false,
+    needsFollowUp: false,
+  }
+}
+```
+
+### Prompt Engineering for Structured Data
+
+Extracting structured information required carefully crafted prompts:
+
+```typescript
+const analysisPrompt = `
+You are analyzing a candidate's response during a software engineering interview.
+
+Current question: "${currentNode.message}"
+Candidate's response: "${userResponse}"
+
+Based on the response, please extract the following information in JSON format:
+{
+  "relevance": 0-10,
+  "clarity": 0-10,
+  "extractedInfo": {
+    ${nodeId === "name" ? '"name": "extracted name",' : ""}
+    "hasNoExperience": boolean,
+    "shouldSkipCategory": boolean
+  }
+}
+
+IMPORTANT: Return ONLY the raw JSON object without any markdown formatting.
+`
+```
+
+### Thinking State Simulation
+
+A "thinking" delay was added for more human-like behavior:
+
+```typescript
+// Show thinking state with a minimum duration
+setIsThinking(true)
+const minThinkingTime = Math.random() * 1000 + 1500 // 1.5-2.5 seconds
+
+const timer = setTimeout(() => {
+  setIsThinking(false)
+}, minThinkingTime)
+
+setThinkingTimer(timer)
+```
+
+---
