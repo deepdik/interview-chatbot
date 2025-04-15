@@ -1,10 +1,3 @@
-Sure! Here's your modified README file with:
-
-- Proper bullet formatting throughout
-- Included **Design Decisions**, **Assumptions**, and **Interesting Technical Tidbits** sections
-- Consistent Markdown styling with backticks for code and bold titles for clarity
-
----
 
 # Interview Chatbot
 
@@ -243,5 +236,3 @@ const timer = setTimeout(() => {
 
 setThinkingTimer(timer)
 ```
-
----
