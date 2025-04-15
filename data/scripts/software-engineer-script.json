@@ -1,0 +1,156 @@
+{
+  "startNodeId": "greeting",
+  "nodes": {
+    "greeting": {
+      "id": "greeting",
+      "message": "Hello! Are you interested in discussing our Software Engineer position at TechInnovate Solutions?",
+      "responseType": "yes-no",
+      "branches": [
+        { "condition": "yes", "nextNodeId": "name" },
+        { "condition": "no", "nextNodeId": "end-not-interested", "endConversation": true }
+      ],
+      "examples": ["Yes", "No"]
+    },
+    "end-not-interested": {
+      "id": "end-not-interested",
+      "message": "No problem. Thank you for your time and best of luck!",
+      "responseType": "open"
+    },
+    "name": {
+      "id": "name",
+      "message": "Great! Let's get started. What is your name?",
+      "responseType": "open",
+      "nextNodeId": "role-preference",
+      "examples": ["John", "Sarah Smith"]
+    },
+    "role-preference": {
+      "id": "role-preference",
+      "message": "Nice to meet you, {name}! Which specific role within software engineering are you applying for? (e.g., Backend Developer, Frontend Developer, Full Stack Engineer)",
+      "responseType": "open",
+      "branches": [
+        { "condition": "specific_role", "nextNodeId": "python-rating" },
+        { "condition": "unsure", "nextNodeId": "suggest-roles" }
+      ],
+      "examples": ["Backend Developer", "Frontend Developer", "Full Stack Engineer"]
+    },
+    "suggest-roles": {
+      "id": "suggest-roles",
+      "message": "We have several engineering roles available: Backend Developer (Python/Django), Frontend Developer (React), and Full Stack Engineer. Which one interests you the most?",
+      "responseType": "open",
+      "nextNodeId": "python-rating",
+      "examples": ["Backend Developer", "Frontend Developer", "Full Stack Engineer"]
+    },
+    "python-rating": {
+      "id": "python-rating",
+      "message": "On a scale from 1 to 10, how would you rate your proficiency in Python?",
+      "responseType": "rating",
+      "nextNodeId": "python-project",
+      "examples": ["8", "I'd say about 7 out of 10"]
+    },
+    "python-project": {
+      "id": "python-project",
+      "message": "Can you briefly describe a project where you applied Python to solve a technical challenge?",
+      "responseType": "open",
+      "nextNodeId": "react-rating",
+      "examples": ["I built a data analysis tool that...", "In my last role, I created a Python script to..."]
+    },
+    "react-rating": {
+      "id": "react-rating",
+      "message": "Now, on a scale from 1 to 10, how confident are you with React?",
+      "responseType": "rating",
+      "nextNodeId": "react-project",
+      "examples": ["9", "I'd rate myself a 6 out of 10"]
+    },
+    "react-project": {
+      "id": "react-project",
+      "message": "Tell me about a challenging situation where you used React to build or improve an application.",
+      "responseType": "open",
+      "nextNodeId": "debugging-approach",
+      "examples": ["I built a complex form with multiple states...", "I optimized rendering performance by..."]
+    },
+    "debugging-approach": {
+      "id": "debugging-approach",
+      "message": "What is your approach to debugging issues in production environments?",
+      "responseType": "open",
+      "nextNodeId": "bug-example",
+      "examples": ["I first check the logs to...", "My approach involves isolating the issue by..."]
+    },
+    "bug-example": {
+      "id": "bug-example",
+      "message": "Can you give an example of a difficult bug you encountered and how you resolved it?",
+      "responseType": "open",
+      "nextNodeId": "code-quality",
+      "examples": ["We had a memory leak that...", "I once debugged a race condition by..."]
+    },
+    "code-quality": {
+      "id": "code-quality",
+      "message": "How do you ensure your code is robust and maintainable? Do you use unit testing, code reviews, or CI/CD pipelines?",
+      "responseType": "open",
+      "nextNodeId": "salary",
+      "examples": ["I write unit tests for all critical functions...", "I rely on a combination of code reviews and..."]
+    },
+    "salary": {
+      "id": "salary",
+      "message": "What is your expected salary for this position?",
+      "responseType": "salary",
+      "branches": [
+        { "condition": "within_range", "nextNodeId": "agile-experience" },
+        { "condition": "above_range", "nextNodeId": "negotiate-salary" }
+      ],
+      "examples": ["$90,000", "$85k per year"],
+      "validationRules": {
+        "min": 60000,
+        "max": 100000,
+        "currency": "USD"
+      }
+    },
+    "negotiate-salary": {
+      "id": "negotiate-salary",
+      "message": "Our budget for this role is up to $100,000. Would you be open to that range?",
+      "responseType": "yes-no",
+      "branches": [
+        { "condition": "yes", "nextNodeId": "agile-experience" },
+        { "condition": "no", "nextNodeId": "end-salary", "endConversation": true }
+      ],
+      "examples": ["Yes, that works for me", "No, I need more"]
+    },
+    "end-salary": {
+      "id": "end-salary",
+      "message": "Unfortunately, that's beyond our budget. Thank you for your time!",
+      "responseType": "open"
+    },
+    "agile-experience": {
+      "id": "agile-experience",
+      "message": "Are you experienced with agile methodologies and version control systems like Git?",
+      "responseType": "yes-no",
+      "nextNodeId": "team-contribution",
+      "examples": ["Yes", "No"]
+    },
+    "team-contribution": {
+      "id": "team-contribution",
+      "message": "Can you share an example of how you've contributed to a team project using these practices?",
+      "responseType": "open",
+      "nextNodeId": "staying-updated",
+      "examples": ["In my last project, I implemented CI/CD pipelines...", "I led daily standups and..."]
+    },
+    "staying-updated": {
+      "id": "staying-updated",
+      "message": "How do you stay updated with the latest trends in software development?",
+      "responseType": "open",
+      "nextNodeId": "candidate-questions",
+      "examples": ["I follow tech blogs like...", "I attend conferences and participate in..."]
+    },
+    "candidate-questions": {
+      "id": "candidate-questions",
+      "message": "Thank you for sharing your experiences, {name}. Do you have any questions about the role or our company?",
+      "responseType": "open",
+      "nextNodeId": "ending",
+      "examples": ["What's the team structure like?", "Can you tell me more about the company culture?"]
+    },
+    "ending": {
+      "id": "ending",
+      "message": "Great! We appreciate your time and will review your responses. We'll be in touch soon!",
+      "responseType": "open"
+    }
+  }
+}

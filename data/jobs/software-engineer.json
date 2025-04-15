@@ -1,0 +1,49 @@
+{
+  "company": "TechInnovate Solutions",
+  "position": "Software Engineer",
+  "location": "San Francisco, CA",
+  "about": {
+    "type": "Full-time position",
+    "salary": "$80,000-$100,000 depending on experience",
+    "roles": [
+      "Backend focuses on Python, Django, and AWS",
+      "Frontend focuses on React, TypeScript, and Next.js",
+      "Full Stack involves both backend and frontend technologies"
+    ],
+    "reporting": "Reports to the Engineering Manager"
+  },
+  "requirements": [
+    "Bachelor's degree in Computer Science or related field (or equivalent experience)",
+    "Backend: Experience with Python and web frameworks",
+    "Frontend: Experience with React and modern JavaScript",
+    "Full Stack: Experience with both backend and frontend technologies",
+    "Experience with Git and CI/CD pipelines",
+    "Strong problem-solving skills and attention to detail"
+  ],
+  "benefits": [
+    "Comprehensive health, dental, and vision insurance",
+    "401(k) with 4% match",
+    "Unlimited PTO (minimum 3 weeks encouraged)",
+    "Home office stipend",
+    "Professional development budget",
+    "Catered lunches on in-office days"
+  ],
+  "about_company": [
+    "Series B startup with 120 employees",
+    "Building AI-powered workflow automation tools",
+    "Values: Innovation, Collaboration, User-Centric Design",
+    "Diverse and inclusive workplace"
+  ],
+  "faq": {
+    "job_title": "The position is for a Software Engineer, specializing in either Backend, Frontend, or Full Stack development.",
+    "position": "The position is for a Software Engineer, specializing in either Backend, Frontend, or Full Stack development.",
+    "salary": "The salary range for this position is $80,000-$100,000 per year, depending on experience and qualifications.",
+    "benefits": "We offer comprehensive health, dental, and vision insurance, a 401(k) with 4% match, unlimited PTO (minimum 3 weeks encouraged), a home office stipend, professional development budget, and catered lunches on in-office days.",
+    "remote": "This is a hybrid position requiring 2 days in the office per week at our San Francisco headquarters.",
+    "tech_stack": "For backend: Python, Django, Flask, PostgreSQL, and AWS. For frontend: React, TypeScript, Next.js, and modern CSS frameworks.",
+    "company": "TechInnovate Solutions is a Series B startup with 120 employees. We're building AI-powered workflow automation tools for businesses.",
+    "culture": "We value innovation, collaboration, and user-centric design. We have a diverse and inclusive workplace with a focus on work-life balance.",
+    "interview_process": "The interview process includes this initial screening, followed by a technical assessment, and then a final round with the team and hiring manager.",
+    "start_date": "We're looking for someone who can start within the next 4-6 weeks, but we're flexible for the right candidate."
+  }
+}
